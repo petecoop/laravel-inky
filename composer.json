@@ -1,0 +1,19 @@
+{
+    "name": "petecoop/laravel-inky",
+    "description": "Foundation Inky templates in Laravel",
+    "authors": [
+        {
+            "name": "petecoop",
+            "email": "pete@petecoop.co.uk"
+        }
+    ],
+    "require": {
+        "illuminate/contracts": "5.1.*|5.2.*|5.3.*",
+        "illuminate/support": "5.1.*|5.2.*|5.3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Petecoop\\LaravelInky\\": "src/"
+        }
+    }
+}

@@ -3,6 +3,7 @@
 namespace Petecoop\LaravelInky;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Engines\CompilerEngine;
 
 class InkyServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,7 @@ class InkyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->registerExtension();
     }
 
     /**
@@ -23,6 +24,23 @@ class InkyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $app = $this->app;
+        $resolver = $app['view.engine.resolver'];
+        
+        $app->singleton('inky.compiler', function ($app) {
+            $cache = $app['config']['view.compiled'];
+            
+            return new InkyCompiler($app['blade.compiler'], $app['files'], $cache);
+        });
+        
+        $resolver->register('inky', function () use ($app) {
+            return new CompilerEngine($app['inky.compiler']);
+        });
     }
+    
+    protected function registerExtension()
+    {
+        $this->app['view']->addExtension('inky.php', 'inky');
+    }
+
 }

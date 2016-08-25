@@ -21,7 +21,7 @@ Check the [Foundation for Emails docs](http://foundation.zurb.com/emails/docs/in
 
 Create an Inky view e.g. `emails/welcome.inky.php`
 
-```
+```blade
 <container>
   <row>
     <columns>Welcome, {{ $name }}</columns>
@@ -31,7 +31,7 @@ Create an Inky view e.g. `emails/welcome.inky.php`
 
 Use `Mail` as usual in Laravel
 
-```
+```php
 Mail::send('emails.welcome', ['name' => $user->name], function ($m) use ($user) {
   $m->from('hello@app.com', 'Your Application');
 
@@ -41,7 +41,7 @@ Mail::send('emails.welcome', ['name' => $user->name], function ($m) use ($user) 
 
 You can create a Blade layout to inherit from e.g. `emails/layout.inky.php`
 
-``` 
+```blade
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -57,7 +57,7 @@ You can create a Blade layout to inherit from e.g. `emails/layout.inky.php`
 
 then
 
-```
+```blade
 @extends('emails.layout')
 
 @section('content')

@@ -1,6 +1,6 @@
 Allows you to use Foundation's [Inky](http://foundation.zurb.com/emails/docs/inky.html) email templates nicely in Laravel 5.
 
-Any views with a `.inky.php` extension will be compiled with both Inky and Blade, allowing you to use both templating engines seamlessly together.
+Any views with a `.inky.php` extension will be compiled with both Inky and Blade, allowing you to use both templating engines seamlessly together. CSS is automatically inlined so styles work in email clients that don't support external stylesheets.
 
 ## Installation
 
@@ -47,7 +47,7 @@ You can create a Blade layout to inherit from e.g. `emails/layout.inky.php`
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width"/>
-  <link rel="stylesheet" href="/css/foundation-emails.css">
+  <link rel="stylesheet" href="foundation-emails.css">
 </head>
 <body>
   @yield('content')
@@ -68,3 +68,16 @@ then
   </container>
 @stop
 ```
+
+### CSS Inlining
+
+The location of your CSS is resolved to the `resources/assets/css` directory, so in the example above it expects some CSS at `resources/assets/css/foundation-emails.css`.
+
+
+### Known Issues
+
+Any styles in `<style>` tags are being stripped out. It's intended that they will be inlined along with external CSS, an issue is open on the Inky library for this: https://github.com/thampe/inky/issues/7
+
+## Licence
+
+[MIT Licence](LICENCE)

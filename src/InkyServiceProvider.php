@@ -3,7 +3,6 @@
 namespace Petecoop\LaravelInky;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\Engines\CompilerEngine;
 
 class InkyServiceProvider extends ServiceProvider
 {
@@ -32,9 +31,9 @@ class InkyServiceProvider extends ServiceProvider
             
             return new InkyCompiler($app['blade.compiler'], $app['files'], $cache);
         });
-        
+
         $resolver->register('inky', function () use ($app) {
-            return new CompilerEngine($app['inky.compiler']);
+            return new InkyCompilerEngine($app['inky.compiler'], $app['files']);
         });
     }
     

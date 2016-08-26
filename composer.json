@@ -1,7 +1,7 @@
 {
     "name": "petecoop/laravel-inky",
     "description": "Foundation Inky email templates in Laravel",
-    "keywords": ["foundation", "inky"],
+    "keywords": ["foundation", "inky", "laravel"],
     "license": "MIT",
     "authors": [
         {

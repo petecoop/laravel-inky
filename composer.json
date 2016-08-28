@@ -18,11 +18,17 @@
         "symfony/dom-crawler": "^2.7|^3.0"
     },
     "require-dev": {
+        "graham-campbell/testbench": "^3.2",
         "phpunit/phpunit": "~5.4"
     },
     "autoload": {
         "psr-4": {
             "Petecoop\\LaravelInky\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Petecoop\\Tests\\LaravelInky\\": "tests"
         }
     }
 }

@@ -33,4 +33,9 @@ class InkyCompilerEngine extends CompilerEngine
         $emogrifier = new Emogrifier($results, $styles);
         return $emogrifier->emogrify();
     }
+    
+    public function getFiles()
+    {
+        return $this->files;
+    }
 }

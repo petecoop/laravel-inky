@@ -7,8 +7,12 @@ php:
 
 sudo: false
 
+cache:
+  directories:
+    - vendor
+
 install:
   - travis_retry composer install --no-interaction --prefer-source
 
 script:
-  - vendor/bin/phpunit --coverage-text
+  - vendor/bin/phpunit

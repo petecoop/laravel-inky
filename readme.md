@@ -73,12 +73,10 @@ then
 
 ### CSS Inlining
 
-The location of your CSS is resolved to the `resources/assets/css` directory, so in the example above it expects some CSS at `resources/assets/css/foundation-emails.css`.
+`<style>` and `<link rel="stylesheet">` are automatically inlined.
 
+The location of your `<link rel="stylesheet">` `href` is resolved to the `resources/assets/css` directory, so in the example above it expects some CSS at `resources/assets/css/foundation-emails.css`.
 
-### Known Issues
-
-Any styles in `<style>` tags are being stripped out. It's intended that they will be inlined along with external CSS, an issue is open on the Inky library for this: https://github.com/thampe/inky/issues/7
 
 ## Licence
 

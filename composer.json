@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "hampe/inky": "^1.3.6",
+        "hampe/inky": "^1.3.6.2",
         "illuminate/support": "5.1.*|5.2.*|5.3.*",
         "illuminate/view": "5.1.*|5.2.*|5.3.*",
         "pelago/emogrifier": "^1.0.0",

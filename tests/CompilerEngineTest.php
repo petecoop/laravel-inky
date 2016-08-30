@@ -39,7 +39,20 @@ class CompilerEngineTest extends AbstractTestCase
             ->andReturn('body {color:red;}');
             
         $this->assertContains('<body style="color: red;">', $engine->get($path));
+    }
+    
+    public function testStyleInline()
+    {
+        $engine = $this->getEngine();
+        $path = __DIR__.'/stubs/inlinestyle';
         
+        $engine->getCompiler()->shouldReceive('isExpired')->once()
+            ->with($path)->andReturn(false);
+            
+        $engine->getCompiler()->shouldReceive('getCompiledPath')->once()
+            ->with($path)->andReturn($path);
+            
+        $this->assertContains('<body style="color: blue;">', $engine->get($path));
     }
     
     protected function getEngine()

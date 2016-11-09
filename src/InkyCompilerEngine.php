@@ -6,7 +6,7 @@ use Illuminate\View\Engines\CompilerEngine;
 use Illuminate\View\Compilers\CompilerInterface;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\DomCrawler\Crawler;
-use Pelago\Emogrifier;
+use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
 class InkyCompilerEngine extends CompilerEngine
 {
@@ -30,8 +30,8 @@ class InkyCompilerEngine extends CompilerEngine
             return $files->get($path);
         })->implode("\n\n");
 
-        $emogrifier = new Emogrifier($results, $styles);
-        return $emogrifier->emogrify();
+        $inliner = new CssToInlineStyles();
+        return $inliner->convert($results, $styles);
     }
     
     public function getFiles()

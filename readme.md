@@ -77,6 +77,7 @@ then
 
 The location of your `<link rel="stylesheet">` `href` is resolved to the `resources/assets/css` directory, so in the example above it expects some CSS at `resources/assets/css/foundation-emails.css`.
 
+Here's a handy reference for CSS in emails: [CSS Support Guide for Email Clients](https://www.campaignmonitor.com/css/)
 
 ## Licence
 

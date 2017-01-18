@@ -37,8 +37,11 @@ class CompilerEngineTest extends AbstractTestCase
         $engine->getFiles()->shouldReceive('get')->once()
             ->with(resource_path('assets/css/test'))
             ->andReturn('body {color:red;}');
-            
-        $this->assertContains('<body style="color: red;">', $engine->get($path));
+        
+        $html = $engine->get($path);
+        
+        $this->assertContains('<body style="color: red;">', $html);
+        $this->assertNotContains('<link rel="stylesheet"', $html);
     }
     
     public function testStyleInline()
@@ -51,8 +54,11 @@ class CompilerEngineTest extends AbstractTestCase
             
         $engine->getCompiler()->shouldReceive('getCompiledPath')->once()
             ->with($path)->andReturn($path);
+        
+        $html = $engine->get($path);
             
-        $this->assertContains('<body style="color: blue;">', $engine->get($path));
+        $this->assertContains('<body style="color: blue;">', $html);
+        $this->assertNotContains('<script', $html);
     }
     
     protected function getEngine()

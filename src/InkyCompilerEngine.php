@@ -23,9 +23,23 @@ class InkyCompilerEngine extends CompilerEngine
         $results = parent::get($path, $data);
 
         $crawler = new Crawler($results);
-        $stylesheets = collect($crawler->filter('link[rel=stylesheet]')->extract('href'));
+        $stylesheets = $crawler->filter('link[rel=stylesheet]');
+
+        // collect hrefs
+        $stylesheetsHrefs = collect($stylesheets->extract('href'));
+
+        // remove links
+        $stylesheets->each(function (Crawler $crawler) {;
+            foreach ($crawler as $node) {
+                $node->parentNode->removeChild($node);
+            }
+        });
+
+        $results = $crawler->html();
+
+        // get the styles
         $files = $this->files;
-        $styles = $stylesheets->map(function ($stylesheet) use ($files) {
+        $styles = $stylesheetsHrefs->map(function ($stylesheet) use ($files) {
             $path = resource_path('assets/css/' . $stylesheet);
             return $files->get($path);
         })->implode("\n\n");

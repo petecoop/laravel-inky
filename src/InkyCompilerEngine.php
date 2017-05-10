@@ -22,7 +22,9 @@ class InkyCompilerEngine extends CompilerEngine
     {
         $results = parent::get($path, $data);
 
-        $crawler = new Crawler($results);
+        $crawler = new Crawler();
+        $crawler->addHtmlContent($results);
+        
         $stylesheets = $crawler->filter('link[rel=stylesheet]');
 
         // collect hrefs

@@ -61,6 +61,38 @@ class CompilerEngineTest extends AbstractTestCase
         $this->assertNotContains('<script', $html);
     }
     
+    public function testKeepsDocType()
+    {
+        $engine = $this->getEngine();
+        $path = __DIR__.'/stubs/doctype';
+
+        $engine->getCompiler()->shouldReceive('isExpired')->once()
+            ->with($path)->andReturn(false);
+
+        $engine->getCompiler()->shouldReceive('getCompiledPath')->once()
+            ->with($path)->andReturn($path);
+
+        $html = $engine->get($path);
+
+        $this->assertContains('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">', $html);
+    }
+
+    public function testKeepsDisplayNone()
+    {
+        $engine = $this->getEngine();
+        $path = __DIR__.'/stubs/displaynone';
+
+        $engine->getCompiler()->shouldReceive('isExpired')->once()
+            ->with($path)->andReturn(false);
+
+        $engine->getCompiler()->shouldReceive('getCompiledPath')->once()
+            ->with($path)->andReturn($path);
+
+        $html = $engine->get($path);
+
+        $this->assertContains('<p style="display: none;">testy</p>', $html);
+    }
+
     protected function getEngine()
     {
         $compiler = Mockery::mock(CompilerInterface::class);

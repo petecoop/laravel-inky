@@ -1,0 +1,6 @@
+<style>
+p {
+  display: none;
+}
+</style>
+<p>testy</p>

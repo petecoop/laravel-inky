@@ -31,5 +31,12 @@
         "psr-4": {
             "Petecoop\\Tests\\LaravelInky\\": "tests"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Petecoop\\LaravelInky\\InkyServiceProvider"
+            ]
+        }
     }
 }

@@ -1,6 +1,6 @@
 [![Build Status](https://img.shields.io/travis/petecoop/laravel-inky.svg)](https://travis-ci.org/petecoop/laravel-inky)
 
-Allows you to use Foundation's [Inky](http://foundation.zurb.com/emails/docs/inky.html) email templates nicely in Laravel 5.
+Allows you to use Foundation for Email(https://foundation.zurb.com/emails.html) email templates nicely in Laravel 5.
 
 Any views with a `.inky.php` extension will be compiled with both Inky and Blade, allowing you to use both templating engines seamlessly together. CSS is automatically inlined so styles work in email clients that don't support external stylesheets.
 
@@ -15,6 +15,12 @@ Once installed, you'll need to register the service provider. Open `config/app.p
 
 ```
 Petecoop\LaravelInky\InkyServiceProvider::class
+```
+
+Move the assets to your application
+
+```
+php artisan vendor:publish --provider="Petecoop\LaravelInky\InkyServiceProvider"
 ```
 
 ## Usage
@@ -49,7 +55,7 @@ You can create a Blade layout to inherit from e.g. `emails/layout.inky.php`
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width"/>
-  <link rel="stylesheet" href="foundation-emails.css">
+  <link rel="stylesheet" href="{{ asset('css/foundation-emails.css') }}">
 </head>
 <body>
   @yield('content')
@@ -74,8 +80,6 @@ then
 ### CSS Inlining
 
 `<style>` and `<link rel="stylesheet">` are automatically inlined.
-
-The location of your `<link rel="stylesheet">` `href` is resolved to the `resources/assets/css` directory, so in the example above it expects some CSS at `resources/assets/css/foundation-emails.css`.
 
 Here's a handy reference for CSS in emails: [CSS Support Guide for Email Clients](https://www.campaignmonitor.com/css/)
 

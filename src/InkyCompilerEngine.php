@@ -1,12 +1,11 @@
 <?php
 
-namespace Petecoop\LaravelInky;
+namespace fibis\LaravelInky;
 
 use Illuminate\View\Engines\CompilerEngine;
 use Illuminate\View\Compilers\CompilerInterface;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\DomCrawler\Crawler;
-use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
 class InkyCompilerEngine extends CompilerEngine
 {
@@ -46,8 +45,8 @@ class InkyCompilerEngine extends CompilerEngine
             return $files->get($path);
         })->implode("\n\n");
 
-        $inliner = new CssToInlineStyles();
-        return $inliner->convert($results, $styles);
+        $emogrifier = new \Pelago\Emogrifier($results, $styles);
+        return $emogrifier->emogrify();
     }
     
     public function getFiles()

@@ -1,6 +1,4 @@
-[![Build Status](https://img.shields.io/travis/petecoop/laravel-inky.svg)](https://travis-ci.org/petecoop/laravel-inky)
-
-Allows you to use Foundation's [Inky](http://foundation.zurb.com/emails/docs/inky.html) email templates nicely in Laravel 5.
+Allows you to use Foundation's [Inky](http://foundation.zurb.com/emails/docs/inky.html) email templates nicely in Laravel 5. This Version is a working one!
 
 Any views with a `.inky.php` extension will be compiled with both Inky and Blade, allowing you to use both templating engines seamlessly together. CSS is automatically inlined so styles work in email clients that don't support external stylesheets.
 

@@ -14,13 +14,13 @@ composer require petecoop/laravel-inky
 Once installed, you'll need to register the service provider. Open `config/app.php` and add to the `providers` key:
 
 ```
-Petecoop\LaravelInky\InkyServiceProvider::class
+Christhompsontldr\LaravelInky\InkyServiceProvider::class
 ```
 
 Move the assets to your application
 
 ```
-php artisan vendor:publish --provider="Petecoop\LaravelInky\InkyServiceProvider"
+php artisan vendor:publish --provider="Christhompsontldr\LaravelInky\InkyServiceProvider"
 ```
 
 ## Usage

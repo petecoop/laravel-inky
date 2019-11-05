@@ -1,6 +1,6 @@
 <?php
 
-namespace Petecoop\LaravelInky;
+namespace Christhompsontldr\LaravelInky;
 
 use Illuminate\View\Compilers\Compiler;
 use Illuminate\View\Compilers\CompilerInterface;

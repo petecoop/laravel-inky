@@ -1,12 +1,12 @@
 {
-    "name": "petecoop/laravel-inky",
+    "name": "christhompsontldr/laravel-inky",
     "description": "Foundation Inky email templates in Laravel",
     "keywords": ["foundation", "inky", "laravel"],
     "license": "MIT",
     "authors": [
         {
-            "name": "petecoop",
-            "email": "pete@petecoop.co.uk"
+            "name": "Chris Thompson",
+            "email": "christhompsontldr@gmail.com"
         }
     ],
     "require": {
@@ -24,18 +24,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Petecoop\\LaravelInky\\": "src"
+            "Christhompsontldr\\LaravelInky\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Petecoop\\Tests\\LaravelInky\\": "tests"
+            "Christhompsontldr\\Tests\\LaravelInky\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Petecoop\\LaravelInky\\InkyServiceProvider"
+                "Christhompsontldr\\LaravelInky\\InkyServiceProvider"
             ]
         }
     }

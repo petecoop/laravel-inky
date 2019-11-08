@@ -8,7 +8,7 @@ Any views with a `.inky.php` extension will be compiled with both Inky and Blade
 
 Require with composer
 ```
-composer require petecoop/laravel-inky
+composer require bryanjamesmiller/laravel-inky
 ```
 
 ## Usage

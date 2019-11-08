@@ -5,7 +5,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "bryanjamesmiller",
+            "name": "Bryan Miller",
             "email": "bryan@kirschbaumdevelopment.com"
         }
     ],
@@ -24,18 +24,18 @@
     },
     "autoload": {
         "psr-4": {
-            "bryanjamesmiller\\LaravelInky\\": "src"
+            "Bryanjamesmiller\\LaravelInky\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "bryanjamesmiller\\Tests\\LaravelInky\\": "tests"
+            "Bryanjamesmiller\\Tests\\LaravelInky\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "bryanjamesmiller\\LaravelInky\\InkyServiceProvider"
+                "Bryanjamesmiller\\LaravelInky\\InkyServiceProvider"
             ]
         }
     }

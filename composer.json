@@ -5,8 +5,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "petecoop",
-            "email": "pete@petecoop.co.uk"
+            "name": "bryanjamesmiller",
+            "email": "bryan@kirschbaumdevelopment.com"
         }
     ],
     "require": {
@@ -24,18 +24,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Petecoop\\LaravelInky\\": "src"
+            "bryanjamesmiller\\LaravelInky\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Petecoop\\Tests\\LaravelInky\\": "tests"
+            "bryanjamesmiller\\Tests\\LaravelInky\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Petecoop\\LaravelInky\\InkyServiceProvider"
+                "bryanjamesmiller\\LaravelInky\\InkyServiceProvider"
             ]
         }
     }

@@ -46,8 +46,8 @@ class InkyCompilerEngine extends CompilerEngine
             return $files->get($path);
         })->implode("\n\n");
 
-        $inliner = new CssToInlineStyles();
-        return $inliner->convert($results, $styles);
+        $emogrifier = new \Pelago\Emogrifier($results, $styles);
+        return $emogrifier->emogrify();
     }
     
     public function getFiles()

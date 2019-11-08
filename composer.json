@@ -18,7 +18,7 @@
         "pelago/emogrifier": "^2.0"
     },
     "require-dev": {
-        "graham-campbell/testbench": "^3.3",
+        "graham-campbell/testbench": "^5.3",
         "phpunit/phpunit": "~5.4",
         "mockery/mockery": "^0.9.5"
     },

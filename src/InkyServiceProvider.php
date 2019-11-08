@@ -1,6 +1,6 @@
 <?php
 
-namespace Petecoop\LaravelInky;
+namespace Bryanjamesmiller\LaravelInky;
 
 use Illuminate\Support\ServiceProvider;
 

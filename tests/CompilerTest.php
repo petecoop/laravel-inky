@@ -58,11 +58,11 @@ class CompilerTest extends AbstractTestCase
     public function testInkyContainer()
     {
         $compiler = $this->getCompiler();
-        
+
         $compiler->getBlade()->shouldReceive('compileString')->once()
-            ->with('<table class="container"><tbody><tr><td></td></tr></tbody></table>')
+            ->with('<table class="container" align="center"><tbody><tr><td></td></tr></tbody></table>')
             ->andReturn('container');
-            
+
         $this->assertEquals('container', $compiler->compileString('<container></container>'));
     }
     

@@ -5,7 +5,7 @@ namespace Petecoop\LaravelInky;
 use Illuminate\View\Compilers\Compiler;
 use Illuminate\View\Compilers\CompilerInterface;
 use Illuminate\Filesystem\Filesystem;
-use Hampe\Inky\Inky;
+use IncentFit\Inky\Inky;
 
 class InkyCompiler extends Compiler implements CompilerInterface
 {

@@ -1,6 +1,6 @@
-[![Build Status](https://img.shields.io/travis/petecoop/laravel-inky.svg)](https://travis-ci.org/petecoop/laravel-inky)
+[![Build Status](https://img.shields.io/travis/rsvpify/laravel-inky.svg)](https://travis-ci.org/rsvpify/laravel-inky)
 
-Allows you to use Foundation's [Inky](http://foundation.zurb.com/emails/docs/inky.html) email templates nicely in Laravel 5.
+Allows you to use Foundation's [Inky](http://foundation.zurb.com/emails/docs/inky.html) email templates nicely in Laravel 6.
 
 Any views with a `.inky.php` extension will be compiled with both Inky and Blade, allowing you to use both templating engines seamlessly together. CSS is automatically inlined so styles work in email clients that don't support external stylesheets.
 
@@ -8,13 +8,7 @@ Any views with a `.inky.php` extension will be compiled with both Inky and Blade
 
 Require with composer
 ```
-composer require petecoop/laravel-inky
-```
-
-Once installed, you'll need to register the service provider. Open `config/app.php` and add to the `providers` key:
-
-```
-Petecoop\LaravelInky\InkyServiceProvider::class
+composer require rsvpify/laravel-inky
 ```
 
 ## Usage

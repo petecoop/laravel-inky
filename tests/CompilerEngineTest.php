@@ -20,7 +20,7 @@ class CompilerEngineTest extends AbstractTestCase
         $engine->getCompiler()->shouldReceive('getCompiledPath')->once()
             ->with($path)->andReturn($path);
         
-        $this->assertContains('<p>testy</p>', $engine->get($path));
+        $this->assertStringContainsString('<p>testy</p>', $engine->get($path));
     }
     
     public function testCssInline()
@@ -40,8 +40,8 @@ class CompilerEngineTest extends AbstractTestCase
         
         $html = $engine->get($path);
         
-        $this->assertContains('<body style="color: red;">', $html);
-        $this->assertNotContains('<link rel="stylesheet"', $html);
+        $this->assertStringContainsString('<body style="color: red;">', $html);
+        $this->assertStringNotContainsString('<link rel="stylesheet"', $html);
     }
     
     public function testStyleInline()
@@ -57,8 +57,8 @@ class CompilerEngineTest extends AbstractTestCase
         
         $html = $engine->get($path);
             
-        $this->assertContains('<body style="color: blue;">', $html);
-        $this->assertNotContains('<script', $html);
+        $this->assertStringContainsString('<body style="color: blue;">', $html);
+        $this->assertStringNotContainsString('<script', $html);
     }
 
     public function testKeepsDisplayNone()
@@ -74,7 +74,7 @@ class CompilerEngineTest extends AbstractTestCase
 
         $html = $engine->get($path);
 
-        $this->assertContains('<p style="display: none;">testy</p>', $html);
+        $this->assertStringContainsString('<p style="display: none;">testy</p>', $html);
     }
 
     protected function getEngine()

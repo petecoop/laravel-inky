@@ -4,15 +4,17 @@ on: [push]
 
 jobs:
   php-cs-fixer:
-   runs-on: ubuntu-latest
-   steps:
-    - name: PHP Syntax Checker (Lint)
-      uses: StephaneBour/actions-php-lint@7.3
+    name: PHP-CS-Fixer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: PHP CS Fixer
+        uses: StephaneBour/actions-php-cs-fixer@1.0
   laravel-tests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      run: vendor/bin/phpunit
+      - uses: actions/checkout@v1
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        run: vendor/bin/phpunit

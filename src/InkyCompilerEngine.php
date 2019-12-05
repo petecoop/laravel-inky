@@ -2,7 +2,6 @@
 
 namespace Rsvpify\LaravelInky;
 
-use Illuminate\Support\Str;
 use Illuminate\View\Engines\CompilerEngine;
 use Illuminate\View\Compilers\CompilerInterface;
 use Illuminate\Filesystem\Filesystem;
@@ -19,44 +18,41 @@ class InkyCompilerEngine extends CompilerEngine
         $this->files = $files;
     }
 
-    public function get($path, array $data = [])
+    public function get($inkyFilePath, array $data = [])
     {
-        $results = parent::get($path, $data);
+        // Compiles the inky template as if it were a regular blade file
+        $html = parent::get($inkyFilePath, $data);
 
+        // remove css stylesheet links from email's HTML
         $crawler = new Crawler();
-        $crawler->addHtmlContent($results);
+        $crawler->addHtmlContent($html);
+        $cssLinks = $crawler->filter('link[rel=stylesheet]');
 
-        $stylesheets = $crawler->filter('link[rel=stylesheet]');
-
-        // collect hrefs
-        $stylesheetsHrefs = collect($stylesheets->extract('href'));
-
-        // remove links
-        $stylesheets->each(function (Crawler $crawler) {
+        $cssLinks->each(function (Crawler $crawler) {
             foreach ($crawler as $node) {
                 $node->parentNode->removeChild($node);
             }
         });
 
-        $results = $crawler->html();
+        $htmlWithoutLinks = $crawler->html();
 
-        // get the styles
-        $styles = $stylesheetsHrefs->map(function ($path) {
+        // This array of CSS files to be inlined in the email will be
+        // provided via the user in the publishable config file
+        $stylesheetsHrefs = collect(config('inky.stylesheets'));
 
-            //  if this appears to be a local asset, get it locally
-            if (Str::startsWith($path, asset(''))) {
-                $path = str_replace(asset(''), public_path('/'), $path);
-            }
+        // Combine all stylesheets into 1 string of CSS
+        $combinedStyles = $stylesheetsHrefs->map(function ($path) {
+            // The publishable config file should have the stylesheets
+            // referenced at public/$path but we want just the $path part of the URL here.
+            $path = str_replace('public/', '', $path);
 
-            // With the above logic the foundation css file is
-            // going to be expected to be at http://rsvpify.com/public/$stylesheet
             return $this->files->get($path);
         })->implode("\n\n");
 
         $inliner = new CssToInlineStyles();
-        return $inliner->convert($results, $styles);
+        return $inliner->convert($htmlWithoutLinks, $combinedStyles);
     }
-    
+
     public function getFiles()
     {
         return $this->files;

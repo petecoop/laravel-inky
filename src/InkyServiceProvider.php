@@ -2,6 +2,8 @@
 
 namespace Rsvpify\LaravelInky;
 
+use Rsvpify\LaravelInky\InkyCompiler;
+use Rsvpify\LaravelInky\InkyCompilerEngine;
 use Illuminate\Support\ServiceProvider;
 
 class InkyServiceProvider extends ServiceProvider
@@ -16,8 +18,8 @@ class InkyServiceProvider extends ServiceProvider
         $this->registerExtension();
 
         $this->publishes([
-            dirname(__DIR__) . '/assets/css/foundation-emails.css' => public_path('css/foundation-emails.css'),
-        ], 'public');
+            __DIR__.'/config/inky.php' => config_path('inky.php'),
+        ]);
     }
 
     /**
@@ -29,10 +31,10 @@ class InkyServiceProvider extends ServiceProvider
     {
         $app = $this->app;
         $resolver = $app['view.engine.resolver'];
-        
+
         $app->singleton('inky.compiler', function ($app) {
             $cache = $app['config']['view.compiled'];
-            
+
             return new InkyCompiler($app['blade.compiler'], $app['files'], $cache);
         });
 
@@ -40,7 +42,7 @@ class InkyServiceProvider extends ServiceProvider
             return new InkyCompilerEngine($app['inky.compiler'], $app['files']);
         });
     }
-    
+
     protected function registerExtension()
     {
         $this->app['view']->addExtension('inky.php', 'inky');

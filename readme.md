@@ -67,7 +67,7 @@ To apply CSS stylesheets to your inky templates, do not include any `<link>` ele
     ]
 ```
 
-Please reference each additional CSS file you want to apply to your emails by starting with your app's `public/` folder.
+In the above array, reference any additional CSS file(s) you want to apply to your emails by starting your reference with your app's `public/` folder.
 
 Here's a handy reference for CSS in emails: [CSS Support Guide for Email Clients](https://www.campaignmonitor.com/css/)
 

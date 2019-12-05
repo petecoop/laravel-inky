@@ -1,8 +1,8 @@
 <?php
 
-namespace Petecoop\Tests\LaravelInky;
+namespace Rsvpify\Tests\LaravelInky;
 
-use Petecoop\LaravelInky\InkyCompilerEngine;
+use Rsvpify\LaravelInky\InkyCompilerEngine;
 use Illuminate\View\Compilers\CompilerInterface;
 use Illuminate\Filesystem\Filesystem;
 use Mockery;
@@ -35,7 +35,7 @@ class CompilerEngineTest extends AbstractTestCase
             ->with($path)->andReturn($path);
         
         $engine->getFiles()->shouldReceive('get')->once()
-            ->with(resource_path('assets/css/test'))
+            ->with('test')
             ->andReturn('body {color:red;}');
         
         $html = $engine->get($path);

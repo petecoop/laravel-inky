@@ -1,6 +1,6 @@
 <?php
 
-namespace Petecoop\LaravelInky;
+namespace Rsvpify\LaravelInky;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -14,6 +14,10 @@ class InkyServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerExtension();
+
+        $this->publishes([
+            dirname(__DIR__) . '/assets/css/foundation-emails.css' => public_path('css/foundation-emails.css'),
+        ], 'public');
     }
 
     /**

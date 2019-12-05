@@ -1,4 +1,8 @@
 vendor
 composer.lock
 /.idea
+/.vscode
+npm-debug.log
+.php_cs.cache
 .phpunit.result.cache
+.DS_Store

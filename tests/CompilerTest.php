@@ -1,8 +1,8 @@
 <?php
 
-namespace Petecoop\Tests\LaravelInky;
+namespace Rsvpify\Tests\LaravelInky;
 
-use Petecoop\LaravelInky\InkyCompiler;
+use Rsvpify\LaravelInky\InkyCompiler;
 use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\Filesystem\Filesystem;
 use Mockery;

@@ -43,7 +43,7 @@ You can create a Blade layout to inherit from e.g. `emails/layout.inky.php`
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width"/>
-  <link rel="stylesheet" href="foundation-emails.css">
+  <link rel="stylesheet" href="{{ asset('css/foundation-emails.css') }}">
 </head>
 <body>
   @yield('content')

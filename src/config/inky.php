@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Email Stylesheets
@@ -14,6 +13,6 @@ return [
     |
     */
     'stylesheets' => [
-        'public/css/foundation-emails.css'
-    ]
+        'public/css/foundation-emails.css',
+    ],
 ];

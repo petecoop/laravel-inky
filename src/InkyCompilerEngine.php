@@ -2,10 +2,10 @@
 
 namespace Rsvpify\LaravelInky;
 
-use Illuminate\View\Engines\CompilerEngine;
-use Illuminate\View\Compilers\CompilerInterface;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\DomCrawler\Crawler;
+use Illuminate\View\Engines\CompilerEngine;
+use Illuminate\View\Compilers\CompilerInterface;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
 class InkyCompilerEngine extends CompilerEngine
@@ -50,6 +50,7 @@ class InkyCompilerEngine extends CompilerEngine
         })->implode("\n\n");
 
         $inliner = new CssToInlineStyles();
+
         return $inliner->convert($htmlWithoutLinks, $combinedStyles);
     }
 

@@ -2,8 +2,6 @@
 
 namespace Rsvpify\LaravelInky;
 
-use Rsvpify\LaravelInky\InkyCompiler;
-use Rsvpify\LaravelInky\InkyCompilerEngine;
 use Illuminate\Support\ServiceProvider;
 
 class InkyServiceProvider extends ServiceProvider
@@ -18,7 +16,7 @@ class InkyServiceProvider extends ServiceProvider
         $this->registerExtension();
 
         $this->publishes([
-            __DIR__.'/config/inky.php' => config_path('inky.php'),
+            __DIR__ . '/config/inky.php' => config_path('inky.php'),
         ]);
     }
 
@@ -47,5 +45,4 @@ class InkyServiceProvider extends ServiceProvider
     {
         $this->app['view']->addExtension('inky.php', 'inky');
     }
-
 }

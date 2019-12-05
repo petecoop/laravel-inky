@@ -15,16 +15,6 @@ composer require rsvpify/laravel-inky
 
 Check the [Foundation for Emails docs](http://foundation.zurb.com/emails/docs/index.html) for full usage on how to use Inky and Foundation for Emails CSS.
 
-Create an Inky view e.g. `emails/welcome.inky.php`
-
-```blade
-<container>
-  <row>
-    <columns>Welcome, {{ $name }}</columns>
-  </row>
-</container>
-```
-
 Use `Mail` as usual in Laravel
 
 ```php
@@ -43,7 +33,6 @@ You can create a Blade layout to inherit from e.g. `emails/layout.inky.php`
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width"/>
-  <link rel="stylesheet" href="{{ asset('css/foundation-emails.css') }}">
 </head>
 <body>
   @yield('content')
@@ -51,7 +40,7 @@ You can create a Blade layout to inherit from e.g. `emails/layout.inky.php`
 </html>
 ```
 
-then
+then create an Inky view e.g. `emails/welcome.inky.php`
 
 ```blade
 @extends('emails.layout')
@@ -67,9 +56,18 @@ then
 
 ### CSS Inlining
 
-`<style>` and `<link rel="stylesheet">` are automatically inlined.
+Anything in your inky templates `<style>` elements is automatically inlined.
 
-The location of your `<link rel="stylesheet">` `href` is resolved to the `resources/assets/css` directory, so in the example above it expects some CSS at `resources/assets/css/foundation-emails.css`.
+To apply CSS stylesheets to your inky templates, do not include any `<link>` elements.  Rather, run `php artisan vendor:publish` which will create a new `inky.php` file in your `config` directory.  This file contains an example stylesheet you will want to include for Foundation templates.  You will have to obtain a recent copy of this file from Foundation, for instance at https://foundation.zurb.com/emails.html
+
+```
+'stylesheets' => [
+        'public/css/foundation-emails.css',
+        // you can add additional CSS files here to apply to your emails. 
+    ]
+```
+
+Please reference each additional CSS file you want to apply to your emails by starting with your app's `public/` folder.
 
 Here's a handy reference for CSS in emails: [CSS Support Guide for Email Clients](https://www.campaignmonitor.com/css/)
 

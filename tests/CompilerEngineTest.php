@@ -43,7 +43,7 @@ class CompilerEngineTest extends AbstractTestCase
             ->with($path)->andReturn($path);
 
         $engine->getFiles()->shouldReceive('get')->once()
-            ->with('testFoundationFile')
+            ->with(base_path('testFoundationFile'))
             ->andReturn('body {color:red;}');
 
         $html = $engine->get($path);

@@ -25,6 +25,14 @@ class CompilerEngineTest extends AbstractTestCase
 
     public function testCssInline()
     {
+        config(
+            [
+                'inky.stylesheets' => [
+                    'testFoundationFile',
+                ],
+            ]
+        );
+
         $engine = $this->getEngine();
         $path = __DIR__ . '/stubs/inline';
 
@@ -35,7 +43,7 @@ class CompilerEngineTest extends AbstractTestCase
             ->with($path)->andReturn($path);
 
         $engine->getFiles()->shouldReceive('get')->once()
-            ->with('test')
+            ->with('testFoundationFile')
             ->andReturn('body {color:red;}');
 
         $html = $engine->get($path);
@@ -80,8 +88,8 @@ class CompilerEngineTest extends AbstractTestCase
     protected function getEngine()
     {
         $compiler = Mockery::mock(CompilerInterface::class);
-        $files = Mockery::mock(Filesystem::class);
+        $filesystem = Mockery::mock(Filesystem::class);
 
-        return new InkyCompilerEngine($compiler, $files);
+        return new InkyCompilerEngine($compiler, $filesystem);
     }
 }

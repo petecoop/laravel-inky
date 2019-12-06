@@ -10,12 +10,12 @@ use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
 class InkyCompilerEngine extends CompilerEngine
 {
-    protected $files;
+    protected $filesystem;
 
-    public function __construct(CompilerInterface $compiler, Filesystem $files)
+    public function __construct(CompilerInterface $compiler, Filesystem $filesystem)
     {
         parent::__construct($compiler);
-        $this->files = $files;
+        $this->filesystem = $filesystem;
     }
 
     public function get($inkyFilePath, array $data = [])
@@ -38,15 +38,15 @@ class InkyCompilerEngine extends CompilerEngine
 
         // This array of CSS files to be inlined in the email will be
         // provided via the user in the publishable config file
-        $stylesheetsHrefs = collect(config('inky.stylesheets'));
+        $configCssPaths = collect(config('inky.stylesheets'));
 
         // Combine all stylesheets into 1 string of CSS
-        $combinedStyles = $stylesheetsHrefs->map(function ($path) {
+        $combinedStyles = $configCssPaths->map(function ($path) {
             // The publishable config file should have the stylesheets
             // referenced at public/$path but we want just the $path part of the URL here.
             $path = str_replace('public/', '', $path);
 
-            return $this->files->get($path);
+            return $this->filesystem->get($path);
         })->implode("\n\n");
 
         $inliner = new CssToInlineStyles();
@@ -56,6 +56,6 @@ class InkyCompilerEngine extends CompilerEngine
 
     public function getFiles()
     {
-        return $this->files;
+        return $this->filesystem;
     }
 }

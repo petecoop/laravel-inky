@@ -58,7 +58,7 @@ then create an Inky view e.g. `emails/welcome.inky.php`
 
 Anything in your inky templates `<style>` elements is automatically inlined.
 
-To apply CSS stylesheets to your inky templates, do not include any `<link>` elements.  Rather, run `php artisan vendor:publish` which will create a new `inky.php` file in your `config` directory.  This file contains an example stylesheet you will want to include for Foundation templates.  You will have to obtain a recent copy of this file from Foundation, for instance at https://foundation.zurb.com/emails.html
+To apply CSS stylesheets to your inky templates, do not include any `<link>` elements.  Rather, run `php artisan vendor:publish` which will create a new `inky.php` file in your `config` directory.  This file contains an example stylesheet you will want to include for Foundation templates. Be sure to refernce the location of this file starting with your `public` directory. You will have to obtain a recent copy of this file from Foundation, for instance at https://foundation.zurb.com/emails.html
 
 ```
 'stylesheets' => [

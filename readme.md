@@ -1,5 +1,3 @@
-[![Actions Status](https://github.com/rsvpify/laravel-inky/workflows/CI/badge.svg)](https://github.com/rsvpify/laravel-inky/actions)
-
 Allows you to use Foundation's [Inky](http://foundation.zurb.com/emails/docs/inky.html) email templates nicely in Laravel 6.
 
 Any views with a `.inky.php` extension will be compiled with both Inky and Blade, allowing you to use both templating engines seamlessly together. CSS is automatically inlined so styles work in email clients that don't support external stylesheets.

@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/travis/rsvpify/laravel-inky.svg)](https://travis-ci.org/rsvpify/laravel-inky)
+[![Actions Status](https://github.com/rsvpify/laravel-inky/workflows/CI/badge.svg)](https://github.com/rsvpify/laravel-inky/actions)
 
 Allows you to use Foundation's [Inky](http://foundation.zurb.com/emails/docs/inky.html) email templates nicely in Laravel 6.
 

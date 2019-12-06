@@ -15,6 +15,7 @@ class InkyCompilerEngine extends CompilerEngine
     public function __construct(CompilerInterface $compiler, Filesystem $filesystem)
     {
         parent::__construct($compiler);
+
         $this->filesystem = $filesystem;
     }
 

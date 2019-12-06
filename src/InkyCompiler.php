@@ -19,7 +19,7 @@ class InkyCompiler extends Compiler implements CompilerInterface
     {
         parent::__construct($files, $cachePath);
         $this->blade = $blade;
-        $this->inky = new Inky();
+        $this->inky = new Inky;
     }
 
     public function compile($path = null)

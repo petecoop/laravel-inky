@@ -56,9 +56,9 @@ then create an Inky view e.g. `emails/welcome.inky.php`
 
 ### CSS Inlining
 
-Anything in your inky templates `<style>` elements is automatically inlined.
+Anything in your inky.php templates `<style>` elements is automatically inlined.
 
-To apply CSS stylesheets to your inky templates, do not include any `<link>` elements.  Rather, run `php artisan vendor:publish` which will create a new `inky.php` file in your `config` directory.  This file contains an example stylesheet you will want to include for Foundation templates. Be sure to refernce the location of this file starting with your `public` directory. You will have to obtain a recent copy of this file from Foundation, for instance at https://foundation.zurb.com/emails.html
+To apply CSS stylesheets to your inky.php templates, do not include any `<link>` elements.  Rather, run `php artisan vendor:publish` which will create a new `inky.php` file in your `config` directory.  This file contains an example stylesheet you will want to include for Foundation templates. Be sure to reference the location of the Foundation CSS file from your base path. You will have to obtain a recent copy of this file from Foundation, for instance at https://foundation.zurb.com/emails.html
 
 ```
 'stylesheets' => [
@@ -67,7 +67,7 @@ To apply CSS stylesheets to your inky templates, do not include any `<link>` ele
     ]
 ```
 
-In the above array, reference any additional CSS file(s) you want to apply to your emails by starting your reference with your app's `public/` folder.
+In the above array, reference any additional CSS file(s) you want to apply to your emails.  Be sure to include each file starting from the base path. 
 
 Here's a handy reference for CSS in emails: [CSS Support Guide for Email Clients](https://www.campaignmonitor.com/css/)
 

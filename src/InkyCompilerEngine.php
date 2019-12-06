@@ -24,7 +24,7 @@ class InkyCompilerEngine extends CompilerEngine
         $html = parent::get($inkyFilePath, $data);
 
         // remove css stylesheet links from email's HTML
-        $crawler = new Crawler();
+        $crawler = new Crawler;
         $crawler->addHtmlContent($html);
         $cssLinks = $crawler->filter('link[rel=stylesheet]');
 
@@ -36,20 +36,12 @@ class InkyCompilerEngine extends CompilerEngine
 
         $htmlWithoutLinks = $crawler->html();
 
-        // This array of CSS files to be inlined in the email will be
-        // provided via the user in the publishable config file
-        $configCssPaths = collect(config('inky.stylesheets'));
-
         // Combine all stylesheets into 1 string of CSS
-        $combinedStyles = $configCssPaths->map(function ($path) {
-            // The publishable config file should have the stylesheets
-            // referenced at public/$path but we want just the $path part of the URL here.
-            $path = str_replace('public/', '', $path);
-
-            return $this->filesystem->get($path);
+        $combinedStyles = collect(config('inky.stylesheets'))->map(function ($path) {
+            return $this->filesystem->get(base_path($path));
         })->implode("\n\n");
 
-        $inliner = new CssToInlineStyles();
+        $inliner = new CssToInlineStyles;
 
         return $inliner->convert($htmlWithoutLinks, $combinedStyles);
     }

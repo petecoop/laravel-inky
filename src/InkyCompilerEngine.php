@@ -1,57 +1,54 @@
 <?php
 
-namespace Petecoop\LaravelInky;
+namespace Rsvpify\LaravelInky;
 
-use Illuminate\View\Engines\CompilerEngine;
-use Illuminate\View\Compilers\CompilerInterface;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\DomCrawler\Crawler;
+use Illuminate\View\Engines\CompilerEngine;
+use Illuminate\View\Compilers\CompilerInterface;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
 class InkyCompilerEngine extends CompilerEngine
 {
-    protected $files;
+    protected $filesystem;
 
-    public function __construct(CompilerInterface $compiler, Filesystem $files)
+    public function __construct(CompilerInterface $compiler, Filesystem $filesystem)
     {
         parent::__construct($compiler);
-        $this->files = $files;
+
+        $this->filesystem = $filesystem;
     }
 
-    public function get($path, array $data = [])
+    public function get($inkyFilePath, array $data = [])
     {
-        $results = parent::get($path, $data);
+        // Compiles the inky template as if it were a regular blade file
+        $html = parent::get($inkyFilePath, $data);
 
-        $crawler = new Crawler();
-        $crawler->addHtmlContent($results);
-        
-        $stylesheets = $crawler->filter('link[rel=stylesheet]');
+        // remove css stylesheet links from email's HTML
+        $crawler = new Crawler;
+        $crawler->addHtmlContent($html);
+        $cssLinks = $crawler->filter('link[rel=stylesheet]');
 
-        // collect hrefs
-        $stylesheetsHrefs = collect($stylesheets->extract('href'));
-
-        // remove links
-        $stylesheets->each(function (Crawler $crawler) {;
+        $cssLinks->each(function (Crawler $crawler) {
             foreach ($crawler as $node) {
                 $node->parentNode->removeChild($node);
             }
         });
 
-        $results = $crawler->html();
+        $htmlWithoutLinks = $crawler->html();
 
-        // get the styles
-        $files = $this->files;
-        $styles = $stylesheetsHrefs->map(function ($stylesheet) use ($files) {
-            $path = resource_path('assets/css/' . $stylesheet);
-            return $files->get($path);
+        // Combine all stylesheets into 1 string of CSS
+        $combinedStyles = collect(config('inky.stylesheets'))->map(function ($path) {
+            return $this->filesystem->get(base_path($path));
         })->implode("\n\n");
 
-        $inliner = new CssToInlineStyles();
-        return $inliner->convert($results, $styles);
+        $inliner = new CssToInlineStyles;
+
+        return $inliner->convert($htmlWithoutLinks, $combinedStyles);
     }
-    
+
     public function getFiles()
     {
-        return $this->files;
+        return $this->filesystem;
     }
 }

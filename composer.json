@@ -1,6 +1,7 @@
 {
     "name": "rsvpify/laravel-inky",
     "description": "Foundation Inky email templates in Laravel",
+    "version": "0.7.0",
     "keywords": ["foundation", "inky", "laravel"],
     "license": "MIT",
     "authors": [
@@ -11,8 +12,8 @@
     ],
     "require": {
         "incentfit/inky": "1.3.6.5",
-        "illuminate/support": "^5.7|^6.0",
-        "illuminate/view": "^5.7|^6.0",
+        "illuminate/support": "^5.7|^6.0|^7.0",
+        "illuminate/view": "^5.7|^6.0|^7.0",
         "symfony/dom-crawler": "^2.7|^3.0|^4.0",
         "tijsverkoyen/css-to-inline-styles": "^2.2"
     },

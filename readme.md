@@ -1,6 +1,6 @@
 [![Actions Status](https://github.com/rsvpify/laravel-inky/workflows/Testing%20Laravel%20Package/badge.svg)](https://github.com/rsvpify/laravel-inky/actions)
 
-Allows you to use Foundation's [Inky](http://foundation.zurb.com/emails/docs/inky.html) email templates nicely in Laravel 6.
+Allows you to use Foundation's [Inky](http://foundation.zurb.com/emails/docs/inky.html) email templates nicely in Laravel 6-8.
 
 Any views with a `.inky.php` extension will be compiled with both Inky and Blade, allowing you to use both templating engines seamlessly together. CSS is automatically inlined so styles work in email clients that don't support external stylesheets.
 
@@ -63,11 +63,11 @@ To apply CSS stylesheets to your inky.php templates, do not include any `<link>`
 ```
 'stylesheets' => [
         'public/css/foundation-emails.css',
-        // you can add additional CSS files here to apply to your emails. 
+        // you can add additional CSS files here to apply to your emails.
     ]
 ```
 
-In the above array, reference any additional CSS file(s) you want to apply to your emails.  Be sure to include each file starting from the base path. 
+In the above array, reference any additional CSS file(s) you want to apply to your emails.  Be sure to include each file starting from the base path.
 
 Here's a handy reference for CSS in emails: [CSS Support Guide for Email Clients](https://www.campaignmonitor.com/css/)
 

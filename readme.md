@@ -6,7 +6,7 @@ Any views with a `.inky.php` extension will be compiled with both Inky and Blade
 
 Require with composer
 ```
-composer require petecoop/laravel-inky
+composer require fibis/laravel-inky
 ```
 
 Once installed, you'll need to register the service provider. Open `config/app.php` and add to the `providers` key:

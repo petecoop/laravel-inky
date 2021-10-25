@@ -1,10 +1,10 @@
 <?php
 
-namespace Petecoop\Tests\LaravelInky;
+namespace fibis\Tests\LaravelInky;
 
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
-use Petecoop\LaravelInky\InkyCompiler;
-use Petecoop\LaravelInky\InkyCompilerEngine;
+use fibis\LaravelInky\InkyCompiler;
+use fibis\LaravelInky\InkyCompilerEngine;
 
 class ServiceProviderTest extends AbstractTestCase
 {

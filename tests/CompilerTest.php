@@ -1,8 +1,8 @@
 <?php
 
-namespace Petecoop\Tests\LaravelInky;
+namespace fibis\Tests\LaravelInky;
 
-use Petecoop\LaravelInky\InkyCompiler;
+use fibis\LaravelInky\InkyCompiler;
 use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\Filesystem\Filesystem;
 use Mockery;

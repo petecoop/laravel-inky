@@ -7,7 +7,7 @@ use GrahamCampbell\TestBench\AbstractPackageTestCase;
 
 abstract class AbstractTestCase extends AbstractPackageTestCase
 {
-    protected function getServiceProviderClass($app)
+    protected function getServiceProviderClass()
     {
         return InkyServiceProvider::class;
     }

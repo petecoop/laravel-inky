@@ -20,7 +20,7 @@ class CompilerTest extends AbstractTestCase
             ->with('html')->andReturn('html');
 
         $compiler->getFiles()->shouldReceive('put')->once()
-            ->with(__DIR__ . '/3150ecd5e0294534a81ae047ddac559de481d774.php', 'html');
+            ->with(__DIR__ . '/e13dbc54cb72a29f66053c494f2c456242d1fefa.php', 'html');
 
         $this->assertNull($compiler->compile('path'));
     }

@@ -1,7 +1,6 @@
 {
     "name": "rsvpify/laravel-inky",
     "description": "Foundation Inky email templates in Laravel",
-    "version": "0.9.0",
     "keywords": ["foundation", "inky", "laravel"],
     "license": "MIT",
     "authors": [

@@ -5,7 +5,7 @@ namespace fibis\LaravelInky;
 use Illuminate\View\Compilers\Compiler;
 use Illuminate\View\Compilers\CompilerInterface;
 use Illuminate\Filesystem\Filesystem;
-use Hampe\Inky\Inky;
+use Frogbob\InkyPHP\InkyPHP;
 
 class InkyCompiler extends Compiler implements CompilerInterface
 {
@@ -17,7 +17,7 @@ class InkyCompiler extends Compiler implements CompilerInterface
     {
         parent::__construct($files, $cachePath);
         $this->blade = $blade;
-        $this->inky = new Inky();
+        $this->inky = new InkyPHP();
     }
     
     public function compile($path = null)

@@ -12,7 +12,7 @@ composer require fibis/laravel-inky
 Once installed, you'll need to register the service provider. Open `config/app.php` and add to the `providers` key:
 
 ```
-Petecoop\LaravelInky\InkyServiceProvider::class
+fibis\LaravelInky\InkyServiceProvider::class
 ```
 
 ## Usage

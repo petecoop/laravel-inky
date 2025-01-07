@@ -1,4 +1,7 @@
-[![Build Status](https://img.shields.io/travis/petecoop/laravel-inky.svg)](https://travis-ci.org/petecoop/laravel-inky)
+# Not Maintained
+I'd recommend using the maintained fork: https://github.com/rsvpify/laravel-inky which supports the latest versions of Laravel.
+
+# 
 
 Allows you to use Foundation's [Inky](http://foundation.zurb.com/emails/docs/inky.html) email templates nicely in Laravel 5.
 
@@ -6,7 +9,7 @@ Any views with a `.inky.php` extension will be compiled with both Inky and Blade
 
 ## Installation
 
-Require with composer
+Require with composer.
 ```
 composer require petecoop/laravel-inky
 ```
